@@ -4,9 +4,8 @@ trigger:
 	- master
 steps:
 	- task: CopyFiles@2
+		displayName: 'Copy Files to Templates'
 		inputs:
-			displayName: 'Copy Files to:
-$(build.artifactstagingdirectory)/Templates'
     		SourceFolder: 'deployment'
     		Contents: '*.json'
     		TargetFolder: '$(build.artifactstagingdirectory)/Templates'
