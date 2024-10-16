@@ -1,10 +1,12 @@
 pool:
-	vmImage: 'ubuntu-18.04'
+	vmImage: 'ubuntu-latest'
 trigger:
 	- master
 steps:
 	- task: CopyFiles@2
 		inputs:
+			displayName: 'Copy Files to:
+$(build.artifactstagingdirectory)/Templates'
     		SourceFolder: 'deployment'
     		Contents: '*.json'
     		TargetFolder: '$(build.artifactstagingdirectory)/Templates'
@@ -21,6 +23,6 @@ steps:
 			includeRootFolder: false
 	- task: PublishPipelineArtifact@1
 		inputs:
-			targetPath: '$(Build.ArtifactstagingDirectory)'
+			targetPath: '$(build.artifactstagingdirectory)'
 			artifact: 'drop'
 			publishLocation: 'pipeline'
