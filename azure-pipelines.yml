@@ -4,11 +4,10 @@ trigger:
 	- master
 steps:
 	- task: CopyFiles@2
-		displayName: 'Copy Files to:$(Build.ArtifactstagingDirectory)/Templates'
 		inputs:
-			SourceFolder: deployment
-			Contents: '*.json'
-			TargetFolder: '$(build.artifactstagingdirectory)/Templates'
+    		SourceFolder: 'deployment'
+    		Contents: '*.json'
+    		TargetFolder: '$(build.artifactstagingdirectory)/Templates'
 	- task: Npm@1
 		displayName: 'npm custom'
 		inputs:
